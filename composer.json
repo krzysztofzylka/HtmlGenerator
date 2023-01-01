@@ -1,0 +1,19 @@
+{
+    "name": "krzysztofzylka/html-generator",
+    "description": "HTML generator",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Krzysztofzylka\\HtmlGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "krzysztofzylka",
+            "email": "krzysztofzylka@yahoo.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
