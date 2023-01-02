@@ -2,8 +2,7 @@
 
 namespace Krzysztofzylka\HtmlGenerator;
 
-use Krzysztofzylka\HtmlGenerator\bootstrap\AlertTag;
-use Krzysztofzylka\HtmlGenerator\bootstrap\enums\ThemeColor;
+use krzysztofzylka\HtmlGenerator\html\DetailsTag;
 
 class Html {
 
@@ -45,16 +44,21 @@ class Html {
     }
 
     /**
-     * Bootstrap alerts
+     * Create blockquote
      * @param string $value
-     * @param ThemeColor $themeColor
-     * @return AlertTag
+     * @return Tag
      */
-    public static function bsAlert(string $value, ThemeColor $themeColor = ThemeColor::Primary) : AlertTag {
-        return (new AlertTag('div'))
-            ->value($value)
-            ->attribute('class', 'alert alert-' . $themeColor->value)
-            ->attribute('role', 'alert');
+    public static function blockquote(string $value) : Tag {
+        return (new Tag('blockquote'))->value($value);
+    }
+
+    /**
+     * Create details
+     * @param string $value
+     * @return DetailsTag
+     */
+    public static function details(string $value) : DetailsTag {
+        return (new DetailsTag('detail'))->value($value);
     }
 
 
