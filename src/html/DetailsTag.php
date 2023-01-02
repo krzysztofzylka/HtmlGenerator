@@ -2,7 +2,7 @@
 
 namespace krzysztofzylka\HtmlGenerator\html;
 
-use Krzysztofzylka\HtmlGenerator\Tag;
+use krzysztofzylka\HtmlGenerator\Tag;
 
 class DetailsTag extends Tag {
 
@@ -20,16 +20,7 @@ class DetailsTag extends Tag {
     }
 
     public function __toString(): string {
-        $value = $this->getValue();
-
-        if (isset($this->header)) {
-            $value = (new Tag($this->headerTag))
-                    ->value($this->header)
-                    ->attribute('class', 'alert-heading')
-                . $value;
-        }
-
-        $this->value($value);
+        $this->value((new Tag('summary'))->value($this->summary) . $this->getValue());
 
         return parent::__toString();
     }

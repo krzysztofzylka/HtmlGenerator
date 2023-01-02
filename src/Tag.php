@@ -1,6 +1,6 @@
 <?php
 
-namespace Krzysztofzylka\HtmlGenerator;
+namespace krzysztofzylka\HtmlGenerator;
 
 class Tag {
 

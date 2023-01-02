@@ -1,8 +1,10 @@
 <?php
 
-namespace Krzysztofzylka\HtmlGenerator;
+namespace krzysztofzylka\HtmlGenerator;
 
 use krzysztofzylka\HtmlGenerator\html\DetailsTag;
+use krzysztofzylka\HtmlGenerator\html\ImgTag;
+use krzysztofzylka\HtmlGenerator\html\ProgressTag;
 
 class Html {
 
@@ -58,7 +60,50 @@ class Html {
      * @return DetailsTag
      */
     public static function details(string $value) : DetailsTag {
-        return (new DetailsTag('detail'))->value($value);
+        return (new DetailsTag('details'))->value($value);
+    }
+
+    /**
+     * Pre
+     * @param string $value
+     * @return Tag
+     */
+    public static function pre(string $value) : Tag {
+        return (new Tag('pre'))->value($value);
+    }
+
+    /**
+     * Code
+     * @param string $value
+     * @return Tag
+     */
+    public static function code(string $value) : Tag {
+        return (new Tag('code'))->value($value);
+    }
+
+    /**
+     * hr
+     * @return Tag
+     */
+    public static function hr() : Tag {
+        return new Tag('hr');
+    }
+
+    /**
+     * image
+     * @param string $src
+     * @return ImgTag
+     */
+    public static function img(string $src) : ImgTag {
+        return (new ImgTag('img'))->attribute('src', $src);
+    }
+
+    /**
+     * Progress
+     * @return ProgressTag
+     */
+    public static function progress() : ProgressTag {
+        return (new ProgressTag('progress'));
     }
 
 
