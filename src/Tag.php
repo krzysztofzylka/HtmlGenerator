@@ -27,11 +27,11 @@ class Tag {
     /**
      * Add attribute
      * @param string $name
-     * @param string $value
+     * @param ?string $value
      * @param bool $clearAttribute clear attribute
      * @return self
      */
-    public function attribute(string $name, string $value, bool $clearAttribute = false) : self {
+    public function attribute(string $name, ?string $value = null, bool $clearAttribute = false) : self {
         if (isset($this->attributes[$name]) && !$clearAttribute) {
             $this->attributes[$name] = $this->attributes[$name] . ' ' . $value;
         } else {
@@ -101,7 +101,11 @@ class Tag {
         $attributesArray = [];
 
         foreach ($this->attributes as $attributeName => $attributeValue) {
-            $attributesArray[] = $attributeName . '="' . $attributeValue . '"';
+            if (is_null($attributeValue)) {
+                $attributesArray[] = $attributeName;
+            } else {
+                $attributesArray[] = $attributeName . '="' . $attributeValue . '"';
+            }
         }
 
         if (empty($attributesArray)) {
