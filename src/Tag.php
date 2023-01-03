@@ -42,6 +42,39 @@ class Tag {
     }
 
     /**
+     * Set id attribute
+     * @param string $id
+     * @return self
+     */
+    public function id(string $id) : self {
+        $this->attribute('id', $id, true);
+
+        return $this;
+    }
+
+    /**
+     * Add class attribute
+     * @param string $class
+     * @return self
+     */
+    public function class(string $class) : self {
+        $this->attribute('class', $class, false);
+
+        return $this;
+    }
+
+    /**
+     * Clear attribute
+     * @param string $name
+     * @return self
+     */
+    public function clearAttribute(string $name) : self {
+        unset($this->attributes[$name]);
+
+        return $this;
+    }
+
+    /**
      * Get value
      * @return string
      */
