@@ -103,7 +103,16 @@ class Html {
      * @return ProgressTag
      */
     public static function progress() : ProgressTag {
-        return (new ProgressTag('progress'));
+        return new ProgressTag('progress');
+    }
+
+    /**
+     * Span
+     * @param string $value
+     * @return Tag
+     */
+    public static function span(string $value) : Tag {
+        return self::tag('span')->value($value);
     }
 
 

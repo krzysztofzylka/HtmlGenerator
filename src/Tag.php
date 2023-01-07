@@ -42,6 +42,25 @@ class Tag {
     }
 
     /**
+     * Set aria attribute
+     * @param string $name
+     * @param string $value
+     * @return $this
+     */
+    public function aria(string $name, string $value) : self {
+        return $this->attribute('aria-' . $name, $value, true);
+    }
+
+    /**
+     * Set role
+     * @param string $value
+     * @return $this
+     */
+    public function role(string $value) : self {
+        return $this->attribute('role', $value, true);
+    }
+
+    /**
      * Get value
      * @return string
      */
@@ -58,6 +77,15 @@ class Tag {
         }
 
         return '<' . $this->tag . $this->generateAttributes() . '>' . ($this->value ?? '') . '</' . $this->tag . '>';
+    }
+
+    /**
+     * Get attribute
+     * @param string $name
+     * @return ?string
+     */
+    public function getAttribute(string $name) : ?string {
+        return $this->attributes[$name] ?? null;
     }
 
     /**
