@@ -27,16 +27,49 @@ class Tag {
     /**
      * Add attribute
      * @param string $name
-     * @param string $value
+     * @param ?string $value
      * @param bool $clearAttribute clear attribute
      * @return self
      */
-    public function attribute(string $name, string $value, bool $clearAttribute = false) : self {
+    public function attribute(string $name, ?string $value = null, bool $clearAttribute = false) : self {
         if (isset($this->attributes[$name]) && !$clearAttribute) {
             $this->attributes[$name] = $this->attributes[$name] . ' ' . $value;
         } else {
             $this->attributes[$name] = $value;
         }
+
+        return $this;
+    }
+
+    /**
+     * Set id attribute
+     * @param string $id
+     * @return self
+     */
+    public function id(string $id) : self {
+        $this->attribute('id', $id, true);
+
+        return $this;
+    }
+
+    /**
+     * Add class attribute
+     * @param string $class
+     * @return self
+     */
+    public function class(string $class) : self {
+        $this->attribute('class', $class, false);
+
+        return $this;
+    }
+
+    /**
+     * Clear attribute
+     * @param string $name
+     * @return self
+     */
+    public function clearAttribute(string $name) : self {
+        unset($this->attributes[$name]);
 
         return $this;
     }
@@ -96,7 +129,11 @@ class Tag {
         $attributesArray = [];
 
         foreach ($this->attributes as $attributeName => $attributeValue) {
-            $attributesArray[] = $attributeName . '="' . $attributeValue . '"';
+            if (is_null($attributeValue)) {
+                $attributesArray[] = $attributeName;
+            } else {
+                $attributesArray[] = $attributeName . '="' . $attributeValue . '"';
+            }
         }
 
         if (empty($attributesArray)) {
