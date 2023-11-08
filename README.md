@@ -1,163 +1,54 @@
 # HtmlGenerator
 Html generator in PHP
 
-## Tag class
-> Avaliable in all predefined class
-
-### Create empty tag
+# Usage
+## Create empty tag
 ```php
-// <div></div>
-echo new \krzysztofzylka\HtmlGenerator\Tag('div');
+echo new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div');
 ```
-
 ### Create div with contents
 ```php
-// <div>Div contents</div>
-echo new \krzysztofzylka\HtmlGenerator\Tag('div', 'Div contents');
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->setContent('Div content');
 ```
 
-### Create span with attribute
+### Create div with contents and attributes
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-$span->id('idSpan'); //change id attribute
-$span->class('class1'); //add class1
-$span->class('class2'); //add class2
-$span->aria('disabled', 'true'); //add aria-disabled="true"
-$span->value('change value!'); //replace contents
-$span->role('role'); //set role
-
-// <span id="idSpan" class="class1 class2" role="role" aria-disabled="true">change value!</span>
-echo $span;
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->addAttribute('class', 'div-class')
+    ->setContent('Div content');
 ```
-
-### Clear attribute
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-$span->id('idSpan'); //change id attribute
-$span->class('class1'); //add class1
-$span->class('class2'); //add class2
-$span->aria('disabled', 'true'); //add aria-disabled="true"
-$span->value('change value!'); //replace contents
-$span->role('role'); //set role
-
-$span->clearAttribute('class'); //clear class attribute
-
-// <span id="idSpan" role="role" aria-disabled="true">change value!</span>
-echo $span;
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->addAttributes(['class' => 'div-class', ...])
+    ->setContent('Div content');
 ```
 
-### Custom attribute
+### Remove attribute
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-
-
-$span->attribute('test', 'value'); //change attribute
-
-// <span test="value">Span text!</span>
-echo $span;
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->addAttribute('class', 'div-class')
+    ->removeAttribute('class')
+    ->setContent('Div content');
 ```
 
-### Change attribute and clear
+### append attribute text
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-$span->id('idSpan'); //change id attribute
-$span->class('class1'); //add class1
-$span->class('class2'); //add class2
-$span->aria('disabled', 'true'); //add aria-disabled="true"
-$span->value('change value!'); //replace contents
-$span->role('role'); //set role
-
-$span->attribute('class', 'new_class', true); //change attribute
-
-// <span id="idSpan" role="role" class="new_class" aria-disabled="true">change value!</span>
-echo $span;
+// <div class="div-class div-class-2">Div content</div>
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->addAttribute('class', 'div-class')
+    ->appendAttribute('class', 'div-class-2')
+    ->setContent('Div content');
 ```
 
-### Get value
+### Predefined methods
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-
-// Span text
-echo $span->getValue();
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->setId('div-id')
+    ->setContent('Div content');
 ```
-
-### Get attribute
 ```php
-$span = new \krzysztofzylka\HtmlGenerator\Tag('span', 'Span text');
-$span->id('idSpan'); //change id attribute
-$span->class('class1'); //add class1
-$span->class('class2'); //add class2
-$span->aria('disabled', 'true'); //add aria-disabled="true"
-$span->value('change value!'); //replace contents
-$span->role('role'); //set role
-
-// true
-echo $span->getAttribute('aria-disabled');
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('input'))
+    ->setName('input-name')
+    ->setId('input-id');
 ```
-
-# Predefined html tags
-> All methods return Tag class
-## br
-```php
-use \krzysztofzylka\HtmlGenerator\Html;
-
-echo Html::br();
-```
-
-## tag
-```php
-use \krzysztofzylka\HtmlGenerator\Html;
-
-// Html::tag(string $tag, string $value = '')
-echo Html::tag('tag', 'value');
-```
-
-## div
-```php
-use \krzysztofzylka\HtmlGenerator\Html;
-
-// Html::div(string $value)
-echo Html::div('div contents');
-```
-
-## a
-```php
-use \krzysztofzylka\HtmlGenerator\Html;
-
-// Html::a(string $name, string $link) 
-echo Html::a('name', '#');
-```
-
-## blockquote
-```php
-use \krzysztofzylka\HtmlGenerator\Html;
-
-// Html::blockquote(string $value)
-echo Html::blockquote('blockquote');
-```
-
-## details
-> Coming soon
-
-
-## pre
-> Coming soon
-
-
-## code
-> Coming soon
-
-
-## hr
-> Coming soon
-
-
-## img
-> Coming soon
-
-
-## progress
-> Coming soon
-
-## span
-> Coming soon
