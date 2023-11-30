@@ -2,53 +2,48 @@
 Html generator in PHP
 
 # Usage
-## Create empty tag
+## Create tag
 ```php
 echo new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div');
 ```
-### Create div with contents
+## Methods
+### Set content
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
-    ->setContent('Div content');
+    ->setContent('content')
 ```
-
-### Create div with contents and attributes
+### Add attributes
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
-    ->addAttribute('class', 'div-class')
-    ->setContent('Div content');
+    ->addAttributes(['id' => 'div-id', 'class' => 'classes'])
 ```
+### Add attribute
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
-    ->addAttributes(['class' => 'div-class', ...])
-    ->setContent('Div content');
+    ->addAttribute('id', 'div-id')
 ```
-
+### Get attribute
+```php
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->getAttribute('id')
+```
+### Append string to attribute
+```php
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->appendAttribute('class', 'next_class')
+```
 ### Remove attribute
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
-    ->addAttribute('class', 'div-class')
     ->removeAttribute('class')
-    ->setContent('Div content');
 ```
-
-### append attribute text
-```php
-// <div class="div-class div-class-2">Div content</div>
-echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
-    ->addAttribute('class', 'div-class')
-    ->appendAttribute('class', 'div-class-2')
-    ->setContent('Div content');
-```
-
-### Predefined methods
+### Add id attribute
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
     ->setId('div-id')
-    ->setContent('Div content');
 ```
+### Add name attribute
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('input'))
     ->setName('input-name')
-    ->setId('input-id');
 ```
