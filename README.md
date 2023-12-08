@@ -47,3 +47,8 @@ echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('input'))
     ->setName('input-name')
 ```
+### Add class attribute
+```php
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->setClass('class')
+```
