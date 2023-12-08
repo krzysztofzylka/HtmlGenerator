@@ -136,6 +136,18 @@ class HtmlGenerator
     }
 
     /**
+     * Set the class attribute of the HTML tag
+     * @param string $class The value of the class attribute
+     * @return self Returns the instance of the class for method chaining
+     */
+    public function setClass(string $class): self
+    {
+        $this->addAttribute('class', $class);
+
+        return $this;
+    }
+
+    /**
      * Returns the string representation of the object.
      * This method is automatically called when the object
      * is used in a string context. It returns the formatted
