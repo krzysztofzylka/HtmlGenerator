@@ -23,6 +23,16 @@ class HtmlGenerator
     private array $attributes = [];
 
     /**
+     * Creates a new instance of HtmlGenerator and sets the specified tag.
+     * @param string $tag The tag to set for the HtmlGenerator instance.
+     * @return HtmlGenerator The newly created HtmlGenerator instance.
+     */
+    public static function createTag(string $tag): HtmlGenerator
+    {
+        return new HtmlGenerator($tag);
+    }
+
+    /**
      * Constructs a new instance of the class.
      * Initializes the object by assigning the specified tag name to the object's `tagName` property.
      * @param string $tag The tag name for the object.
