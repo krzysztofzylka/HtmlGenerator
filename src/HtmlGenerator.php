@@ -23,13 +23,30 @@ class HtmlGenerator
     private array $attributes = [];
 
     /**
-     * Creates a new instance of HtmlGenerator and sets the specified tag.
-     * @param string $tag The tag to set for the HtmlGenerator instance.
-     * @return HtmlGenerator The newly created HtmlGenerator instance.
+     * Creates a new HtmlGenerator object with the given tag, content, class, and attributes.
+     * @param string $tag The HTML tag to create.
+     * @param string|null $content The content to add inside the tag. Default is null.
+     * @param string|null $class The CSS class to apply to the tag. Default is null.
+     * @param array|null $attributes An associative array of attributes to add to the tag. Default is an empty array.
+     * @return HtmlGenerator The newly created HtmlGenerator object.
      */
-    public static function createTag(string $tag): HtmlGenerator
+    public static function createTag(string $tag, ?string $content = null, ?string $class = null, ?array $attributes = []): HtmlGenerator
     {
-        return new HtmlGenerator($tag);
+        $tag = new HtmlGenerator($tag);
+
+        if (!is_null($content)) {
+            $tag->setContent($content);
+        }
+
+        if (!is_null($class)) {
+            $tag->setClass($class);
+        }
+
+        if (!is_null($attributes)) {
+            $tag->addAttributes($attributes);
+        }
+
+        return $tag;
     }
 
     /**
