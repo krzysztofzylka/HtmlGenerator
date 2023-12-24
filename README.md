@@ -2,6 +2,34 @@
 Html generator in PHP
 
 # Usage
+## Static create tag
+```php
+echo \Krzysztofzylka\HtmlGenerator\HtmlGenerator::createTag('div')
+```
+or
+```php
+echo \Krzysztofzylka\HtmlGenerator\HtmlGenerator::createTag(
+    'div',
+    'content'
+)
+```
+or
+```php
+echo \Krzysztofzylka\HtmlGenerator\HtmlGenerator::createTag(
+    'div',
+    'content',
+    'classes
+)
+```
+or
+```php
+echo \Krzysztofzylka\HtmlGenerator\HtmlGenerator::createTag(
+    'div',
+    'content',
+    'classes',
+    ['attributes' => 'value']
+)
+```
 ## Create tag
 ```php
 echo new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div');
