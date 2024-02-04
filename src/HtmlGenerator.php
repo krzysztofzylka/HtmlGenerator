@@ -74,6 +74,27 @@ class HtmlGenerator
     }
 
     /**
+     * Returns the content of the object.
+     * @return string The content of the object.
+     */
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
+    /**
+     * Appends the given content to the existing content of the object.
+     * @param string $content The content to be appended.
+     * @return self Returns the object instance.
+     */
+    public function appendContent(string $content): self
+    {
+        $this->content .= $content;
+
+        return $this;
+    }
+
+    /**
      * Adds the specified attributes to the element.
      * The method takes an associative array of attributes
      * as parameter and adds them to the existing attributes
@@ -127,12 +148,19 @@ class HtmlGenerator
     }
 
     /**
-     * Remove an attribute from the html tag
-     * @param string $name The name of the attribute to remove
-     * @return self Returns a new instance with the attribute removed
+     * Removes an attribute from the HTML tag.
+     * @param string $name The name of the attribute to remove.
+     * @param ?string $value [optional] The value to remove from the attribute (if provided).
+     * @return self Returns the instance of the object for method chaining.
      */
-    public function removeAttribute(string $name): self
+    public function removeAttribute(string $name, ?string $value = null): self
     {
+        if (!is_null($value)) {
+            $this->attributes[$name] = str_replace('  ', ' ', str_replace($value, '', $this->attributes[$name]));
+
+            return $this;
+        }
+
         unset($this->attributes[$name]);
 
         return $this;

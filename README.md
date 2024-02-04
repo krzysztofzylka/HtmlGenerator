@@ -40,6 +40,16 @@ echo new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div');
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
     ->setContent('content')
 ```
+### Get content
+```php
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->getContent()
+```
+### Append content
+```php
+echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
+    ->appendContent('append content')
+```
 ### Add attributes
 ```php
 echo (new \Krzysztofzylka\HtmlGenerator\HtmlGenerator('div'))
