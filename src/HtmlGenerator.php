@@ -224,8 +224,13 @@ class HtmlGenerator
         $attributesHtml = '';
 
         foreach ($this->attributes as $key => $value) {
-            $attributesHtml .= ' ' . $key . '="' . $value . '"';
+            if (strpos($value, '"') !== false) {
+                $attributesHtml .= ' ' . $key . '=\'' . $value . '\'';
+            } else {
+                $attributesHtml .= ' ' . $key . '="' . $value . '"';
+            }
         }
+
 
         return $attributesHtml;
     }

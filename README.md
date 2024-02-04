@@ -18,7 +18,7 @@ or
 echo \Krzysztofzylka\HtmlGenerator\HtmlGenerator::createTag(
     'div',
     'content',
-    'classes
+    'classes'
 )
 ```
 or
